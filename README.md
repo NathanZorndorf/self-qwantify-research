@@ -1,30 +1,17 @@
+# Visualization of Self reported data on activity, emotions, and desire
+---
+
+These visualizations were made using data acquired through the qwantify app (qwantify.org), which is an app that uses experience sampling to acquire data about activities that you're engaging in and emotions your feeling, designed as part of a research experiment through Northeastern Univesity. I began using the app 1/12/2017, and I have about 150 data points. 
+<br><br>
+In order to understand trends, I've visualized the data in a couple of ways. There are many possible ways to slice the data up and plot it, and these are just a few examples. There were some interesting trends that cropped up when I visualized the data, which I'll talk about. 
+<br>
+It would be very interesting to see how my data looks compared to data from other people! 
+<br><br>
 
 # Frequency Distributions
 ---
 1. Frequency Distributions of all Continuous Variables (Histogram)
 2. Most Common for all Categorical Variables  (Bar Chart - Count)
-
-
-
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-%matplotlib inline
-import seaborn as sns
-
-alpha = 0.05
-
-from scipy.stats import ttest_ind, ttest_1samp, ttest_rel
-
-pd.set_option('display.max_columns', 100)
-```
-
-
-```python
-sns.set(font_scale=1.6)
-sns.set(style='ticks')
-```
 
 
 ```python
@@ -35,8 +22,6 @@ df = pd.read_csv('./data/qwantify.csv')
 ```python
 df.head()
 ```
-
-
 
 
 <div>
@@ -477,59 +462,12 @@ df.head()
 
 
 
-```python
-df['feeling_other'].unique()
-```
-
-
-
-
-    array([0])
-
-
-
-
-```python
-df['feeling_specifiedOther'].unique()
-```
-
-
-
-
-    array([ nan])
-
-
-
-
-```python
-cols = df.columns.tolist()
-
-continuous_cols = ['wantingIntensity','feelingBadToGood', 'energy', 'thinkingOverAndOver', \
-                   'stressed', 'lonely','selfWorth','appreciating']
-
-feeling_type_cols = cols[cols.index('feeling_angry'):cols.index('feelingIntensity_sad')+1:2] \
-                        + ['feeling_other'] \
-                        + ['feeling_noEmotion']
-        
-wanted_to_feel_cols = cols[cols.index('wantedToFeel_control'):cols.index('wantedToFeel_other')+1] \
-                        + ['wantedToFeel_nothingInParticular']
-
-feeling_cols = cols[cols.index('feeling_angry'):cols.index('feelingIntensity_sad')+1] + ['feeling_noEmotion']
-```
-
-
-```python
-print len(continuous_cols)
-```
-
-    8
-
-
 ## Frequency Distributions
 ---
 
 ### 1. Frequency Distributions of all Continuous Variables (Histogram)
 
+Frequency distributions allow us to get a quick overview of the data, so we can see the distribution of our data, and check whether the data is skewed or abnormally distributed, or if there missing values or outliers.
 
 ```python
 bins = 20
@@ -547,6 +485,7 @@ plt.savefig('./images/Histogram of Continuous Variables')
 
 ![png](/readme-images/output_11_0.png)
 
+Using a histogram with bars gives us a very granular view of the data, and we can see that in the feelingBadToGood, there's very few points in the bin directly to the right of the midpoint (0.5), which I think is just due to a lack of data. But the negeative side of the feelingBadToGood distribution tapers off nicely, and there are many values in between 0 and 0.5, whereas on the positive side, there are very few values between 0.5 and 1, and they cluster around 0.6. Does this suggest that I'm generally a more somber person? Possibly! Or that I need more data (well, we always need more data :p)
 
 
 ```python
@@ -574,6 +513,8 @@ plt.savefig('./images/KDE (Histograms) of Continuous Variables')
 
 
 ![png](/readme-images/output_12_0.png)
+
+Using the KDE plots allows us to see the general shape of each distribution more easily than the previous chart. Here we can see that the thinkingOverandOver has some outliers, and it might be interesting the explore the context of those oultiers. selfWorth looks skewed positively, and the lonely histogram simple doesn't have enough data points, which is why it's not a smooth KDE plot. 
 
 
 ## Time Series
@@ -639,6 +580,8 @@ plt.savefig('./images/Continuous Variables By Hour')
 
 ![png](/readme-images/output_20_0.png)
 
+The time series plots exchibit some interesting trends. Loneliness generally peaks at 5 each day - just when I would have been leaving work for the day, which makes sense as I'm usually taking BART at that time, surrounded by people I don't know (which is generally when I feel the loneliest). SelfWorth peaks at around 3 PM, possibly because I'm hitting my stride at work? Mornings, my favorite time of day, are the least stressed - I still wonder what about mornings is it that causes me to be more relaxed than average? Exploring the morning activities to get some context would be an interesting next step.
+
 
 ### 2. Daily Averages for All Continuous Variables 
 
@@ -672,6 +615,8 @@ plt.savefig('./images/Continuous Variables By Day of Week')
 
 
 ![png](/readme-images/output_22_0.png)
+
+In the daily averages, we can see peaks for selfWorth and AppreciatingTheMoment on saturdays, which is interesting. The data science Bootcamp was a stressful time period, and this data reflects that time, so it could be that weekdays had me very stressed and comparing myself to classmates might have negatively affected my self-worth. On saturdays I wouldn't have compared myself or felt as much pressure. 
 
 
 ### 3. Frequencies of Categorical Variables as Stacked Line Chart
@@ -764,6 +709,8 @@ plt.savefig('./images/want_to_feel_relative_frequency_by_hour', bbox_extra_artis
 
 ![png](/readme-images/output_28_0.png)
 
+This chart is like the hourly time series plots, but allows us to compare the frequency my desires to one another on an hourly basis. My desire to feel compotent exceeds any other desire at 3 PM, also the same time I felt the most self-worth. And at 5, I want to feel the most connected with others, which matches the plot showing how loneliness peaked at 5 PM.
+
 
 ### Relative Frequency of Want to Feel by Day of Week
 
@@ -844,6 +791,8 @@ plt.savefig('./images/want_to_feel_relative_frequency_by_day', bbox_extra_artist
 
 ![png](/readme-images/output_31_0.png)
 
+Here we can see that my desire to feel conencted increases as the week goes on, whereas my desire for being in control of my situation decreases as the weekend approaches. 
+
 
 ## Aggregations 
 ---
@@ -909,6 +858,8 @@ plt.savefig('./images/Relationships between Continuous Variables')
 
 
 ![png](/readme-images/output_39_1.png)
+
+This pairplot allows us to immediately spot correlations between the continuous variables of the data set. Energy and self worth are positively correlated, whereas energy and stress are negatively correlated - just a few relationships that stand out.
 
 
 ### Scatter plot of the average Intensity of Want vs. Energy for each activity
@@ -976,3 +927,8 @@ plt.savefig('./images/intensity_of_want_vs_energy_for_each_activity', bbox_extra
 
 ![png](/readme-images/output_43_0.png)
 
+
+This plot allows us to see the average wanting intensity vs. energy or each general activity that I engage in. the size of the bubble represents the frequency for which I engage in that activity - here I spend the most time working, and the least time exercising. When I'm traveling, I generally have a high wanting intensity and high energy, which makes sense - when I'm traveling I'm eagerly anticipating my next activity. Leisure, not surprisingly has a high wanting intensity, but low energy - I'm relaxing! 
+
+<br>
+I'm very curious how this plot would look for other people. I think that personalities would pop out more apparently with this chart. 
