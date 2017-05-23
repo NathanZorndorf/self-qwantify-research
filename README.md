@@ -545,7 +545,7 @@ plt.savefig('./images/Histogram of Continuous Variables')
 ```
 
 
-![png]('./readme-images/output_11_0.png')
+![png](/readme-images/output_11_0.png)
 
 
 
@@ -573,7 +573,7 @@ plt.savefig('./images/KDE (Histograms) of Continuous Variables')
 ```
 
 
-![png]('./readme-images/output_12_0.png')
+![png](/readme-images/output_12_0.png)
 
 
 ## Time Series
@@ -599,7 +599,7 @@ plt.savefig('./images/Histogram of Responses by Hour')
 ```
 
 
-![png]('./readme-images/output_18_0.png')
+![png](/readme-images/output_18_0.png)
 
 
 
@@ -637,7 +637,7 @@ plt.savefig('./images/Continuous Variables By Hour')
 ```
 
 
-![png]('./readme-images/output_20_0.png')
+![png](/readme-images/output_20_0.png)
 
 
 ### 2. Daily Averages for All Continuous Variables 
@@ -671,7 +671,7 @@ plt.savefig('./images/Continuous Variables By Day of Week')
 ```
 
 
-![png]('./readme-images/output_22_0.png')
+![png](/readme-images/output_22_0.png)
 
 
 ### 3. Frequencies of Categorical Variables as Stacked Line Chart
@@ -762,7 +762,7 @@ plt.savefig('./images/want_to_feel_relative_frequency_by_hour', bbox_extra_artis
 ```
 
 
-![png]('./readme-images/output_28_0.png')
+![png](/readme-images/output_28_0.png)
 
 
 ### Relative Frequency of Want to Feel by Day of Week
@@ -842,7 +842,7 @@ plt.savefig('./images/want_to_feel_relative_frequency_by_day', bbox_extra_artist
 ```
 
 
-![png]('./readme-images/output_31_0.png')
+![png](/readme-images/output_31_0.png)
 
 
 ## Aggregations 
@@ -878,7 +878,7 @@ plt.savefig('./images/Count of Feeling Types')
 ```
 
 
-![png]('./readme-images/output_36_0.png')
+![png](/readme-images/output_36_0.png)
 
 
 ## Correlations
@@ -908,7 +908,7 @@ plt.savefig('./images/Relationships between Continuous Variables')
 
 
 
-![png]('./readme-images/output_39_1.png')
+![png](/readme-images/output_39_1.png)
 
 
 ### Scatter plot of the average Intensity of Want vs. Energy for each activity
@@ -974,5 +974,5 @@ plt.savefig('./images/intensity_of_want_vs_energy_for_each_activity', bbox_extra
 ```
 
 
-![png]('./readme-images/output_43_0.png')
+![png](/readme-images/output_43_0.png)
 
