@@ -485,7 +485,7 @@ plt.savefig('./images/Histogram of Continuous Variables')
 
 ![png](/readme-images/output_11_0.png)
 
-Using a histogram with bars gives us a very granular view of the data, and we can see that in the feelingBadToGood, there's very few points in the bin directly to the right of the midpoint (0.5), which I think is just due to a lack of data. But the negeative side of the feelingBadToGood distribution tapers off nicely, and there are many values in between 0 and 0.5, whereas on the positive side, there are very few values between 0.5 and 1, and they cluster around 0.6. Does this suggest that I'm generally a more somber person? Possibly! Or that I need more data (well, we always need more data :p)
+Using a histogram with bars gives us a very granular view of the data, and we can see that in the feelingBadToGood, there's very few points in the bin directly to the right of the midpoint (0.5), which I think is just due to a lack of data. But the negeative side of the feelingBadToGood distribution tapers off nicely, and there are many values in between 0 and 0.5, whereas on the positive side, there are very few values between 0.5 and 1, and they cluster around 0.6. 
 
 
 ```python
